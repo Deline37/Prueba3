@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="col-md-3">
+                <img src="../../../assets/clima.png" alt="ImagenClima" class="img-fluid">
+            </div>
+            <div class="container-fluid">
+                Clima
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h3>Chile <span>{{activeId}}</span></h3>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+       <ul class="nav" ngbNav [(activeId)]="activeId">
+           <li *ngFor="let region of listaRegiones" ngbNavItem="{{region.nombre}}">
+               <a ngbNavLink onclick="RegionBuscada()">{{region.nombre}}</a>
+           </li>
+       </ul>
+    </div>
+</nav>
+
+<div class="container-fluid" *ngIf="activeId != ''">
+    <div class="row" >
+        <button *ngFor="let dia of Region?.dias" [routerLink]="['/actualizarClima']">
+            <div class="card">
+                <div class="justify-content">
+                    <h3>{{dia.nombreDia}}</h3>
+                </div>
+                <img src="../../../assets/{{dia.clima}}.png" alt="imagen clima" class="card-img-top">
+                <div class="card-boddy">
+                    <h5>{{dia.gradosC}}</h5>
+                    <p>{{dia.clima}}</p>
+                </div>
+            </div>
+        </button>
+        
+    </div>
+</div>
